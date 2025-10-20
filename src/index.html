@@ -1,0 +1,28 @@
+<HTML>
+    <HEAD>
+    <META NAME="GENERATOR" Content="Microsoft Visual Studio">
+    <TITLE></TITLE>
+    </HEAD>
+        <BODY>
+            <center>
+                <h1>TEST</h1>
+                    <from method="get" action="index.php">
+                        <input type="submit" style = "font-size: 14 pt" value="OFF" name="off">
+                        <input type="submit" style = "font-size: 14 pt" value="ON" name="on">
+                    </from>
+                </center>
+<?php
+            system("gpio -g mode 2 out");
+            if(isset($_GET['off']))
+                {
+                    echo "LED is off";
+                    system("gpio -g write 2 0");
+                }
+                    else if(isset($_GET['on']))
+                    {
+                        echo "LED is off";
+                        system("gpio -g write 2 1");
+                    }
+?>
+        </BODY>
+    </HTML>
